@@ -1,15 +1,17 @@
+import DOMHandler from "./dom_handler.js";
 import Login from "./pages/login.js";
-import { login } from "./services/sessions_fetcher.js";
+import { getUser } from "./services/signup_fetcher.js";
 import STORE from "./store.js";
 
 (async function () {
   
   if(sessionStorage.getItem("token")){
     try{
-    const userData = await login("scribani@test.com", "123456");
+    const userData = await getUser();
     sessionStorage.setItem("token", userData.token);
     await STORE.setInitialData();
     console.log(STORE.contacts, STORE.favorites);
+    DOMHandler.render(Main);
     }  catch (e){
       console.log(e);
       alert(e);
@@ -18,8 +20,6 @@ import STORE from "./store.js";
     }
   }else {
     DOMHandler.render(Login);
-
   }
-  
   
 })();
