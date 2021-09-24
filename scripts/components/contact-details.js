@@ -40,7 +40,7 @@ function onContactEdit(e) {
 
 const ContactDetails = () => {
   return {
-    title: "<h2 class='main-header'>Contact Detail</h2>",
+    title: "<h2>Contact Detail</h2>",
     toString: function () {
       const contact = STORE.getCurrentContact();
       return `
