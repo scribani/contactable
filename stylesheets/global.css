@@ -2,8 +2,11 @@
   --font-black: #000;
   --font-dark-grey: #111111;
   --font-blue: #2f80ed;
+  --font-royal-blue: #2962FF;
   --font-grey: #767676;
+  --font-grey-white: #dbd3d3;
   --font-white: #ffffff;
+  --font-grey-secondary: #bfbfbf;
   --background-white: #ffffff;
   --background-blue: #3685e2;
   --background-grey: #e5e5e5;
@@ -16,6 +19,12 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Roboto;
+
+}
+
+body{
+  
+  background: var(--background-grey);
 }
 
 h2 {
@@ -56,6 +65,23 @@ label {
   color: var(--font-black);
 }
 
+h6,
+p {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+h6 {
+  color: var(--font-grey-secondary);
+}
+
+p {
+  color: var(--font-black);
+}
+
 input {
   background: var(--background-white);
   border: var(--border-blue);
@@ -90,6 +116,16 @@ a i {
   pointer-events: none;
 }
 
+.body-app{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 375px;
+  height: 667px;
+  margin: 0 auto;
+  background-color: var(--font-white);
+}
+
 .js-content {
   margin-bottom: 100px;
 }
@@ -98,4 +134,16 @@ a i {
   display: block;
   text-align: right;
   padding: 10px 38px;
+}
+
+.mp-r-25{
+  margin-right: 25px ;
+}
+
+.mp-r-16{
+  margin-right: 15px ;
+}
+
+.p-t-6{
+  padding-top: 6px;
 }
