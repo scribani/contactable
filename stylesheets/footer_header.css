@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  margin: 0px 20px;
+  padding: 14px;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--font-grey-white);
+}
+
+.footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 0px 20px;
+  padding: 14px 0 14px 14px;
+  border-top: 1px solid var(--font-grey-white);
+}
+
+.title-header {
+}
+
+.button-blue {
+  color: var(--font-royal-blue);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+}

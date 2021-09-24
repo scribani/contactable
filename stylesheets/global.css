@@ -2,7 +2,9 @@
   --font-black: #000;
   --font-dark-grey: #111111;
   --font-blue: #2f80ed;
+  --font-royal-blue: #2962FF;
   --font-grey: #767676;
+  --font-grey-white: #dbd3d3;
   --font-white: #ffffff;
   --background-white: #ffffff;
   --background-blue: #3685e2;
@@ -16,6 +18,12 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Roboto;
+
+}
+
+body{
+  
+  background: var(--background-grey);
 }
 
 h2 {
@@ -90,6 +98,16 @@ a i {
   pointer-events: none;
 }
 
+.body-app{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 375px;
+  height: 667px;
+  margin: 0 auto;
+  background-color: var(--font-white);
+}
+
 .js-content {
   margin-bottom: 100px;
 }
@@ -98,4 +116,16 @@ a i {
   display: block;
   text-align: right;
   padding: 10px 38px;
+}
+
+.mp-r-25{
+  margin-right: 25px ;
+}
+
+.mp-r-16{
+  margin-right: 15px ;
+}
+
+.p-t-6{
+  padding-top: 6px;
 }
