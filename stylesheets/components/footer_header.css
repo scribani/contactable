@@ -27,7 +27,8 @@
   align-items: center;
 }
 
-.button-submit{
+.button-login{
   border: 0px solid var(--font-grey-secondary);
   background: transparent;
+  cursor: pointer;
 }
