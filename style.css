@@ -2,4 +2,5 @@
 @import url("./stylesheets/global.css");
 @import url("./stylesheets/components/footer_header.css");
 @import url("./stylesheets/components/contact_detail.css");
-@import url("./stylesheets/components/login-signup.css")
+@import url("./stylesheets/components/input.css");
+@import url("./stylesheets/components/login-signup.css");
