@@ -19,11 +19,9 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Roboto;
-
 }
 
 body{
-  
   background: var(--background-grey);
 }
 
@@ -83,14 +81,15 @@ p {
 }
 
 input {
-  background: var(--background-white);
-  border: var(--border-blue);
-  border-radius: 8px;
   height: 40px;
   padding: 5px;
+  outline: 0;
+  border-width: 0 0 1px;
+  width: 235px;
+  border-color: var(--font-grey-white);
 }
 
-button {
+button-circle {
   padding: 8px 16px;
   height: 40px;
   font-weight: bold;
@@ -100,6 +99,10 @@ button {
   background: var(--background-blue);
   border-radius: 8px;
   border: none;
+}
+
+input::placeholder{
+  color: var(--font-grey-secondary) ;
 }
 
 a {

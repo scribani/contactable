@@ -26,3 +26,8 @@
   display: flex;
   align-items: center;
 }
+
+.button-submit{
+  border: 0px solid var(--font-grey-secondary);
+  background: transparent;
+}
