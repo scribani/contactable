@@ -1,3 +1,4 @@
+import DOMHandler from "../dom_handler.js";
 import { login } from "../services/sessions_fetcher.js";
 import STORE from "../store.js";
 
@@ -7,7 +8,7 @@ const Login = (function () {
     const { email, password } = e.target;
     const userData = await login(email.value, password.value);
     sessionStorage.setItem("token", userData.token);
-    await STORE.setInitialData(userData);
+    await STORE.setInitialData(userData);    
     DOMHandler.render(Main);
   }
 
@@ -15,7 +16,7 @@ const Login = (function () {
     render: function () {
       return `
       <section>
-      <div class="body-app">
+      <div class="body-app body-form">
         <div class="header">
           <h3>Login</h3>
         </div>
@@ -23,7 +24,7 @@ const Login = (function () {
           <div class="login_inputs">
             <div>
               <input type="email" name="email" placeholder="email" />
-            </div>
+            </div>          
             <div>
               <input type="password" name="password" placeholder="password" />
             </div>

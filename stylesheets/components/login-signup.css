@@ -7,3 +7,8 @@
   border: 0 0 1px 0 solid var(--font-grey-white);
 }
 
+.body-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

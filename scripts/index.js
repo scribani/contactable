@@ -7,7 +7,7 @@ import STORE from "./store.js";
   
   if(sessionStorage.getItem("token")){
     try{
-    const userData = await getUser();
+   // const userData = await getUser();
     sessionStorage.setItem("token", userData.token);
     await STORE.setInitialData();
     console.log(STORE.contacts, STORE.favorites);
