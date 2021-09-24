@@ -1,0 +1,19 @@
+.input-content {
+  padding: 18px 60px;
+  align-content: center;
+  position: relative;
+}
+
+.error {
+  position: absolute;
+  color: #f5222d;
+  font-size: 10px;
+  line-height: 16px;
+  margin-top: 1px;
+}
+
+.select-button {
+  position: absolute;
+  left: 278px;
+  top: 24px;
+}

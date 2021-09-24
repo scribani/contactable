@@ -2,7 +2,7 @@
   --font-black: #000;
   --font-dark-grey: #111111;
   --font-blue: #2f80ed;
-  --font-royal-blue: #2962FF;
+  --font-royal-blue: #2962ff;
   --font-grey: #767676;
   --font-grey-white: #dbd3d3;
   --font-white: #ffffff;
@@ -10,7 +10,7 @@
   --background-white: #ffffff;
   --background-blue: #3685e2;
   --background-grey: #e5e5e5;
-  --border-blue: 1px solid #3685e2;
+  --border-gray: 1px solid #bfbfbf;
   --border-black: 1px solid #000000;
 }
 
@@ -19,11 +19,9 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Roboto;
-
 }
 
-body{
-  
+body {
   background: var(--background-grey);
 }
 
@@ -83,11 +81,43 @@ p {
 }
 
 input {
-  background: var(--background-white);
-  border: var(--border-blue);
-  border-radius: 8px;
-  height: 40px;
-  padding: 5px;
+  border: none;
+  border-bottom: 1px solid var(--font-grey-secondary);
+  color: var(--font-grey-secondary);
+  width: 235px;
+  height: 20px;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+input::placeholder {
+  color: var(--font-grey-secondary);
+}
+
+select {
+  appearance: none;
+  color: var(--font-grey-secondary);
+  border: none;
+  border-bottom: 1px solid var(--font-grey-secondary);
+  width: 235px;
+  height: 20px;
+  font-size: 12px;
+  line-height: 20px;
+  z-index: 1;
+}
+
+select:focus,
+input:focus {
+  outline: none;
+}
+
+input:valid {
+  border-bottom: var(--border-black);
+  color: var(--font-black);
+}
+
+option:checked {
+  color: var(--font-black);
 }
 
 button {
@@ -116,10 +146,9 @@ a i {
   pointer-events: none;
 }
 
-.body-app{
+.body-app {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   width: 375px;
   height: 667px;
   margin: 0 auto;
@@ -136,14 +165,14 @@ a i {
   padding: 10px 38px;
 }
 
-.mp-r-25{
-  margin-right: 25px ;
+.mp-r-25 {
+  margin-right: 25px;
 }
 
-.mp-r-16{
-  margin-right: 15px ;
+.mp-r-16 {
+  margin-right: 15px;
 }
 
-.p-t-6{
+.p-t-6 {
   padding-top: 6px;
 }
