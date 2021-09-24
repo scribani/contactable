@@ -1,6 +1,7 @@
 import DOMHandler from "../dom_handler.js";
 import { login } from "../services/sessions_fetcher.js";
 import STORE from "../store.js";
+import Main from "./main.js";
 
 const Login = (function () {
   async function loginUser(e) {
@@ -8,7 +9,7 @@ const Login = (function () {
     const { email, password } = e.target;
     const userData = await login(email.value, password.value);
     sessionStorage.setItem("token", userData.token);
-    await STORE.setInitialData(userData);    
+    await STORE.setInitialData();
     DOMHandler.render(Main);
   }
 
@@ -24,7 +25,7 @@ const Login = (function () {
           <div class="login_inputs">
             <div>
               <input type="email" name="email" placeholder="email" />
-            </div>          
+            </div>
             <div>
               <input type="password" name="password" placeholder="password" />
             </div>

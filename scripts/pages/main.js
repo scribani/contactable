@@ -1,6 +1,10 @@
+import { logout } from "../services/sessions_fetcher.js";
 import ContactDetails from "../components/contact-details.js";
 import { CONTACT_DETAILS, CREATE_CONTACT, EDIT_CONTACT } from "../constants.js";
 import STORE from "../store.js";
+import DOMHandler from "../dom_handler.js";
+import Login from "./login.js";
+import ContactsList from "../components/contacts-list.js";
 
 function getSection(currentSection) {
   switch (currentSection) {
@@ -13,14 +17,30 @@ function getSection(currentSection) {
       return ContactDetails();
     case EDIT_CONTACT:
       return {
-        toString: () => "Edit selected contact",
+        toString: () => {
+          const contact = STORE.getCurrentContact();
+          return `
+          <p>Edit selected contact</p>
+          <form>
+          <input type="text" name="name" value="${contact.name}" />
+          </form>
+          `;
+        },
         addEventListeners: () => {},
       };
     default:
-      return {
-        toString: () => "Contactable's contacts list",
-        addEventListeners: () => {},
-      };
+      return ContactsList();
+  }
+}
+
+async function onLogout(e) {
+  e.preventDefault();
+  try {
+    await logout();
+    STORE.clear();
+    DOMHandler.render(Login);
+  } catch (e) {
+    alert(e);
   }
 }
 
@@ -33,13 +53,16 @@ const Main = (function () {
       return `
       <header class="header">
         ${section.title}
-        <a href="#logout" class="button-blue mp-r-25">Logout</a>
+        <a href="#logout" class="js-logout button-blue mp-r-25">Logout</a>
       </header>
       ${section}
-      ${Boolean(section.footer) ? section.footer : ""}
+      ${section.footer ? section.footer : ""}
       `;
     },
     addEventListeners: function () {
+      const logoutBtn = document.querySelector(".js-logout");
+      logoutBtn.addEventListener("click", onLogout);
+
       section.addEventListeners();
     },
   };

@@ -3,7 +3,7 @@ import { listContacts } from "./services/contacts_fetcher.js";
 async function setInitialData() {
   const contacts = await listContacts();
   this.contacts = contacts;
-  this.favorites = contacts.filter((contact) => contact.favorite);
+  this.updateFavorites();
 }
 
 function clear() {
@@ -17,10 +17,21 @@ function getCurrentContact() {
   return this.contacts.find((contact) => contact.id === this.currentContactId);
 }
 
+function updateContact(updatedData) {
+  this.contacts = this.contacts.map((contact) => {
+    if (contact.id === this.currentContactId) {
+      return Object.assign(contact, updatedData);
+    }
+    return contact;
+  });
+}
+
 function deleteContact(id) {
-  console.log(this.contacts);
   this.contacts = this.contacts.filter((contact) => contact.id !== id);
-  console.log(this.contacts);
+}
+
+function updateFavorites() {
+  this.favorites = this.contacts.filter((contact) => contact.favorite);
 }
 
 const STORE = {
@@ -29,7 +40,9 @@ const STORE = {
   currentSection: "",
   currentContactId: null,
   getCurrentContact,
+  updateContact,
   deleteContact,
+  updateFavorites,
   setInitialData,
   clear,
 };

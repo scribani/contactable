@@ -181,6 +181,10 @@ a i {
   padding-top: 6px;
 }
 
+.height-115 {
+  height: 115%;
+}
+
 .main-header {
   font-family: Arial;
   font-size: 24px;

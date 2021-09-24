@@ -1,4 +1,6 @@
 .list-contact-section {
+  overflow: auto;
+  height: 90%;
   padding: 0px 10px;
 }
 
