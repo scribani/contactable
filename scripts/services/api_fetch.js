@@ -7,8 +7,8 @@ export const apiFetch = async (endpoint, method = "GET", headers, body) => {
     body: JSON.stringify(body),
   });
   if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error.errors);
+    const error = await response.statusText;
+    throw new Error(error);
   }
   if (response.status === 204) return response.statusText;
   return await response.json();
