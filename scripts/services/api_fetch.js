@@ -10,6 +10,6 @@ export const apiFetch = async (endpoint, method = "GET", headers, body) => {
     const error = await response.json();
     throw new Error(error.errors);
   }
-  if (response.status === 204) return {};
+  if (response.status === 204) return response.statusText;
   return await response.json();
 };
