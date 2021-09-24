@@ -26,3 +26,9 @@
   display: flex;
   align-items: center;
 }
+
+.button-login{
+  border: 0px solid var(--font-grey-secondary);
+  background: transparent;
+  cursor: pointer;
+}

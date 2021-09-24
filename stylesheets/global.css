@@ -120,7 +120,7 @@ option:checked {
   color: var(--font-black);
 }
 
-button {
+button-circle {
   padding: 8px 16px;
   height: 40px;
   font-weight: bold;
