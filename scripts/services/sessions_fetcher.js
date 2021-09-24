@@ -14,3 +14,4 @@ export const logout = () =>
   apiFetch("logout", "DELETE", {
     Authorization: `Token token=${sessionStorage.getItem("token")}`,
   });
+

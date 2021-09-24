@@ -1,10 +1,22 @@
-import { login } from "./services/sessions_fetcher.js";
+import DOMHandler from "./dom_handler.js";
+import Login from "./pages/login.js";
+import { getUser } from "./services/signup_fetcher.js";
 import STORE from "./store.js";
 
 (async function () {
-  const userData = await login("scribani@test.com", "123456");
-  sessionStorage.setItem("token", userData.token);
-
-  await STORE.setInitialData();
-  console.log(STORE.contacts, STORE.favorites);
+  
+  if(sessionStorage.getItem("token")){
+    try{
+    await STORE.setInitialData();
+    DOMHandler.render(Main);
+    }  catch (e){
+      console.log(e);
+      alert(e);
+      sessionStorage.removeItem("token");
+      DOMHandler.render(Login);
+    }
+  }else {
+    DOMHandler.render(Login);
+  }
+  
 })();
