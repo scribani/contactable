@@ -1,0 +1,31 @@
+.contact-detail-card {
+  padding: 16px;
+  width: 100%;
+}
+
+.avatar {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 100px;
+  width: 72px;
+  height: 72px;
+}
+
+.contact-name {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.relation {
+  text-align: center;
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+.info-container {
+  margin-bottom: 16px;
+  margin-left: 54px;
+  display: flex;
+  gap: 21px;
+}

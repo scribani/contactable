@@ -4,6 +4,7 @@
   --font-blue: #2f80ed;
   --font-grey: #767676;
   --font-white: #ffffff;
+  --font-grey-secondary: #bfbfbf;
   --background-white: #ffffff;
   --background-blue: #3685e2;
   --background-grey: #e5e5e5;
@@ -53,6 +54,23 @@ label {
   font-weight: normal;
   font-size: 18px;
   line-height: 24px;
+  color: var(--font-black);
+}
+
+h6,
+p {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+h6 {
+  color: var(--font-grey-secondary);
+}
+
+p {
   color: var(--font-black);
 }
 
