@@ -12,6 +12,7 @@
   --background-grey: #e5e5e5;
   --border-gray: 1px solid #bfbfbf;
   --border-black: 1px solid #000000;
+  --error: #f5222d;
 }
 
 * {
@@ -81,8 +82,8 @@ p {
 
 input {
   border: none;
-  border-bottom: 1px solid var(--font-grey-secondary);
-  color: var(--font-grey-secondary);
+  border-bottom: var(--border-black);
+  color: var(--font-black);
   width: 235px;
   height: 20px;
   font-size: 12px;
@@ -108,11 +109,6 @@ select {
 select:focus,
 input:focus {
   outline: none;
-}
-
-input:valid {
-  border-bottom: var(--border-black);
-  color: var(--font-black);
 }
 
 option:checked {

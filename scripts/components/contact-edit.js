@@ -3,10 +3,40 @@ import DOMHandler from "../dom_handler.js";
 import Main from "../pages/main.js";
 import { createContact, editContact } from "../services/contacts_fetcher.js";
 import { CONTACT_DETAILS, CONTACTABLE } from "../constants.js";
+import { mailValidation, nameValidation, numberValidation, relationValidation } from "../validations/validations.js";
 
 async function onContactEdit(e) {
   e.preventDefault();
   const { name, email, number, Relation } = e.target;
+
+  const validname = nameValidation(name.value);
+  const validnumber = numberValidation(number.value);
+  const validemail = mailValidation(email.value);
+
+
+  if (!validname) {
+    name.className = "input-error";
+    const errormsg = name.nextElementSibling;
+    errormsg.style.display = "block";
+  }
+  if (!validnumber){
+    number.className = "input-error";
+    const errormsg = number.nextElementSibling;
+    errormsg.style.display = "block";
+  }
+  if (!validemail) {
+    email.className = "input-error";
+    const errormsg = email.nextElementSibling;
+    errormsg.style.display = "block";
+  }
+
+  if ([validname, validnumber, validemail].includes(false)) return;
+  const inputs = e.target.querySelectorAll("input");
+  const errormsgs = e.target.querySelectorAll(".js-error-msg");
+
+  inputs.forEach((input) => input.className = "");
+  errormsgs.forEach((error) => error.style.display = "none");
+
   const newContact = {
     name: name.value,
     email: email.value,
@@ -33,17 +63,20 @@ const contactEdit = () => {
       return `
         <form class="js-contact-edit">
           <div class="input-content">
-            <input type="text" name="name" placeholder="Name" value="${contact.name}" required>
+            <input type="text" name="name" placeholder="Name" value="${contact.name}" >
+            <p class="js-error-msg error">Error message</p>
           </div>
           <div class="input-content">
-            <input type="number" name="number" placeholder="Number" value="${contact.number}" required>
+            <input type="text" name="number" placeholder="Number" value="${contact.number}">
+            <p class="js-error-msg error">Error message</p>
           </div>
           <div class="input-content">
-            <input type="email" name="email" placeholder="Email" value="${contact.email}" required>
+            <input type="text" name="email" placeholder="Email" value="${contact.email}">
+            <p class="js-error-msg error">Error message</p>
           </div>
           <div class="input-content">
-            <select name="Relation" value="${contact.relation}" required>
-              <option hidden selected disabled>Relation</option>
+            <select name="Relation" value="${contact.relation}">
+              <option hidden selected disabled>${contact.relation}</option>
               <option value="Family">Family</option>
               <option value="Friends">Friends</option>
               <option value="Work">Work</option>
