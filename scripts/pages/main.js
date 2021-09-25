@@ -6,6 +6,7 @@ import DOMHandler from "../dom_handler.js";
 import Login from "./login.js";
 import ContactsList from "../components/contacts-list.js";
 import contacCreate from "../components/contact-create.js";
+import contacEdit from "../components/contact-edit.js"
 
 function getSection(currentSection) {
   switch (currentSection) {
@@ -14,18 +15,7 @@ function getSection(currentSection) {
     case CONTACT_DETAILS:
       return ContactDetails();
     case EDIT_CONTACT:
-      return {
-        toString: () => {
-          const contact = STORE.getCurrentContact();
-          return `
-          <p>Edit selected contact</p>
-          <form>
-          <input type="text" name="name" value="${contact.name}" />
-          </form>
-          `;
-        },
-        addEventListeners: () => {},
-      };
+      return contacEdit();
     default:
       return ContactsList();
   }
