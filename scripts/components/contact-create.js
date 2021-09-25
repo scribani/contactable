@@ -19,21 +19,26 @@ async function onContactCreate(e) {
   DOMHandler.render(Main);
 }
 
+function onReturnToMain(e){
+  e.preventDefault();
+  STORE.currentSection = CONTACTABLE;
+  DOMHandler.render(Main);
+}
+
 const contactCreate = () => {
   return {
     title: "<h2>Create new contact</h2>",
     toString: function () {
       return `
-      <section class="section body-app body-form>
         <form class="js-contact-create">
           <div class="input-content">
             <input type="text" name="name" placeholder="Name" required>
           </div>
           <div class="input-content">
-            <input type="number" name="number" placeholder="Number" required>
+            <input type="text" name="number" placeholder="Number" required> 
           </div>
           <div class="input-content">
-            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="email" placeholder="Email" required>
             <p class="error">Error message</p>
           </div>
           <div class="input-content">
@@ -46,14 +51,12 @@ const contactCreate = () => {
             </select>
             <img src="../assets/images/Polygon 1.png" class="select-button">
           </div>
-        </form>
-      </section>
       `;
     },
     footer: `
-    <div class="footer">
+    <div class="footer footer-contact">
         <div class="mp-r-25">
-          <h3 class="button-blue">Cancel</h3>
+          <h3 class="js-cancel-btn button-blue">Cancel</h3>
         </div>
         <div class="mp-r-16">
             <button class="button-blue button-login mp-r-16" type="submit">
@@ -65,8 +68,9 @@ const contactCreate = () => {
     `,
     addEventListeners: function () {
       const container = document.querySelector(".js-contact-create");
-
+      const btncancel = document.querySelector(".js-cancel-btn");
       container.addEventListener("submit", onContactCreate);
+      btncancel.addEventListener("click", onReturnToMain )
     },
   };
 };
