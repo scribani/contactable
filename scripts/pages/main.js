@@ -1,22 +1,27 @@
 import { logout } from "../services/sessions_fetcher.js";
 import ContactDetails from "../components/contact-details.js";
-import { CONTACT_DETAILS, CREATE_CONTACT, EDIT_CONTACT } from "../constants.js";
+import {
+  CONTACTABLE,
+  CONTACT_DETAILS,
+  CREATE_CONTACT,
+  EDIT_CONTACT,
+} from "../constants.js";
 import STORE from "../store.js";
 import DOMHandler from "../dom_handler.js";
 import Login from "./login.js";
 import ContactsList from "../components/contacts-list.js";
-import contacCreate from "../components/contact-create.js";
-import contacEdit from "../components/contact-edit.js"
+import contactCreate from "../components/contact-create.js";
+import contactEdit from "../components/contact-edit.js";
 
 function getSection(currentSection) {
   switch (currentSection) {
     case CREATE_CONTACT:
-      return contacCreate();
+      return contactCreate();
     case CONTACT_DETAILS:
       return ContactDetails();
     case EDIT_CONTACT:
-      return contacEdit();
-    default:
+      return contactEdit();
+    case CONTACTABLE:
       return ContactsList();
   }
 }

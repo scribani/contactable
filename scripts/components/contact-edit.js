@@ -2,9 +2,9 @@ import STORE from "../store.js";
 import DOMHandler from "../dom_handler.js";
 import Main from "../pages/main.js";
 import { createContact, editContact } from "../services/contacts_fetcher.js";
+import { CONTACTABLE } from "../constants.js";
 
-
-async function onContacEdit(e){
+async function onContactEdit(e) {
   e.preventDefault();
   const { name, email, number, Relation } = e.target;
   const newContact = {
@@ -13,11 +13,11 @@ async function onContacEdit(e){
     number: number.value,
     relation: Relation.value,
   };
-  
-    const userData = await editContact(STORE.currentContactId, newContact);
-    await STORE.updateContact(newContact);
-    STORE.currentSection = "";
-    DOMHandler.render(Main);
+
+  const userData = await editContact(STORE.currentContactId, newContact);
+  await STORE.updateContact(newContact);
+  STORE.currentSection = CONTACTABLE;
+  DOMHandler.render(Main);
 }
 
 const contactEdit = () => {
@@ -26,28 +26,29 @@ const contactEdit = () => {
     toString: function () {
       const contact = STORE.getCurrentContact();
       return `
-      <form class="js-contact-edit">
-      <div class="input-content">
+      <section class="section body-app body-form>
+        <form class="js-contact-edit">
+          <div class="input-content">
             <input type="text" name="name" placeholder="Name" value="${contact.name}" required>
-        </div>
-        <div class="input-content">
+          </div>
+          <div class="input-content">
             <input type="number" name="number" placeholder="Number" value="${contact.number}" required>
-        </div>
-        <div class="input-content">
+          </div>
+          <div class="input-content">
             <input type="email" name="email" placeholder="Email" value="${contact.email}" required>
-            <p class="error">Error message</p>
-        </div>
-        <div class="input-content">
+          </div>
+          <div class="input-content">
             <select name="Relation" value="${contact.relation}" required>
-                <option hidden selected disabled>Relation</option>
-                <option value="Family">Family</option>
-                <option value="Friends">Friends</option>
-                <option value="Work">Work</option>
-                <option value="Acquaintance">Acquaintance</option>
+              <option hidden selected disabled>Relation</option>
+              <option value="Family">Family</option>
+              <option value="Friends">Friends</option>
+              <option value="Work">Work</option>
+              <option value="Acquaintance">Acquaintance</option>
             </select>
             <img src="../assets/images/Polygon 1.png" class="select-button">
-        </div>
-      </div>
+          </div>
+        </form>
+      </section>
       `;
     },
     footer: `
@@ -66,11 +67,9 @@ const contactEdit = () => {
     addEventListeners: function () {
       const container = document.querySelector(".js-contact-edit");
 
-      container.addEventListener("submit", onContacEdit);
-      // container.addEventListener("click", onContactDelete);
-      // container.addEventListener("click", onContactEdit);
+      container.addEventListener("submit", onContactEdit);
     },
   };
-}
+};
 
 export default contactEdit;

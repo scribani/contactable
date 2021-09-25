@@ -1,5 +1,5 @@
 import { deleteContact } from "../services/contacts_fetcher.js";
-import { EDIT_CONTACT } from "../constants.js";
+import { CONTACTABLE, EDIT_CONTACT } from "../constants.js";
 import DOMHandler from "../dom_handler.js";
 import Main from "../pages/main.js";
 import STORE from "../store.js";
@@ -8,7 +8,7 @@ function onReturnToMain(e) {
   e.preventDefault();
   const backBtn = e.target.classList.contains("js-back");
   if (backBtn) {
-    STORE.currentSection = "";
+    STORE.currentSection = CONTACTABLE;
     DOMHandler.render(Main);
   }
 }
@@ -21,7 +21,7 @@ async function onContactDelete(e) {
       const id = STORE.currentContactId;
       await deleteContact(id);
       STORE.deleteContact(id);
-      STORE.currentSection = "";
+      STORE.currentSection = CONTACTABLE;
       DOMHandler.render(Main);
     } catch (e) {
       alert(e);

@@ -2,9 +2,9 @@ import STORE from "../store.js";
 import DOMHandler from "../dom_handler.js";
 import Main from "../pages/main.js";
 import { createContact } from "../services/contacts_fetcher.js";
+import { CONTACTABLE } from "../constants.js";
 
-
-async function onContacCreate(e){
+async function onContactCreate(e) {
   e.preventDefault();
   const { name, email, number, Relation } = e.target;
   const newContact = {
@@ -15,7 +15,7 @@ async function onContacCreate(e){
   };
   const userData = await createContact(newContact);
   await STORE.addContact(userData);
-  STORE.currentSection = "";
+  STORE.currentSection = CONTACTABLE;
   DOMHandler.render(Main);
 }
 
@@ -23,30 +23,31 @@ const contactCreate = () => {
   return {
     title: "<h2>Create new contact</h2>",
     toString: function () {
-     // const contact = STORE.getCurrentContact();
       return `
-      <form class="js-contact-create">
-      <div class="input-content">
+      <section class="section body-app body-form>
+        <form class="js-contact-create">
+          <div class="input-content">
             <input type="text" name="name" placeholder="Name" required>
-        </div>
-        <div class="input-content">
+          </div>
+          <div class="input-content">
             <input type="number" name="number" placeholder="Number" required>
-        </div>
-        <div class="input-content">
+          </div>
+          <div class="input-content">
             <input type="email" name="email" placeholder="Email" required>
             <p class="error">Error message</p>
-        </div>
-        <div class="input-content">
+          </div>
+          <div class="input-content">
             <select name="Relation" required>
-                <option hidden selected disabled>Relation</option>
-                <option value="Family">Family</option>
-                <option value="Friends">Friends</option>
-                <option value="Work">Work</option>
-                <option value="Acquaintance">Acquaintance</option>
+              <option hidden selected disabled>Relation</option>
+              <option value="Family">Family</option>
+              <option value="Friends">Friends</option>
+              <option value="Work">Work</option>
+              <option value="Acquaintance">Acquaintance</option>
             </select>
             <img src="../assets/images/Polygon 1.png" class="select-button">
-        </div>
-      </div>
+          </div>
+        </form>
+      </section>
       `;
     },
     footer: `
@@ -65,11 +66,9 @@ const contactCreate = () => {
     addEventListeners: function () {
       const container = document.querySelector(".js-contact-create");
 
-      container.addEventListener("submit", onContacCreate);
-      // container.addEventListener("click", onContactDelete);
-      // container.addEventListener("click", onContactEdit);
+      container.addEventListener("submit", onContactCreate);
     },
   };
-}
+};
 
 export default contactCreate;
