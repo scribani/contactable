@@ -155,10 +155,6 @@ a i {
   position: relative;
 }
 
-.section {
-  height: 83%;
-}
-
 .logout {
   display: block;
   text-align: right;
@@ -175,10 +171,6 @@ a i {
 
 .p-t-6 {
   padding-top: 6px;
-}
-
-.height-115 {
-  height: 115%;
 }
 
 .main-header {
