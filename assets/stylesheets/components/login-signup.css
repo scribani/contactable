@@ -1,0 +1,14 @@
+.login_inputs{
+  position: relative;
+  margin: auto;
+  left: 0px;
+  bottom: 465px;
+  width: 235px;
+  border: 0 0 1px 0 solid var(--font-grey-white);
+}
+
+.body-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

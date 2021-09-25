@@ -1,17 +1,18 @@
 :root {
   --font-black: #000;
-  --font-dark-grey: #111111;
+  --font-dark-grey: #262626;
   --font-blue: #2f80ed;
-  --font-royal-blue: #2962FF;
-  --font-grey: #767676;
+  --font-royal-blue: #2962ff;
+  --font-grey: #595959;
   --font-grey-white: #dbd3d3;
   --font-white: #ffffff;
   --font-grey-secondary: #bfbfbf;
   --background-white: #ffffff;
   --background-blue: #3685e2;
   --background-grey: #e5e5e5;
-  --border-blue: 1px solid #3685e2;
+  --border-gray: 1px solid #bfbfbf;
   --border-black: 1px solid #000000;
+  --error: #f5222d;
 }
 
 * {
@@ -19,22 +20,19 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Roboto;
-
 }
 
-body{
-  
+body {
   background: var(--background-grey);
 }
 
 h2 {
-  font-family: Inter;
+  font-family: Roboto;
   font-style: normal;
   font-weight: normal;
-  font-size: 30px;
-  line-height: 40px;
-  text-align: center;
-  color: var(--font-black);
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--font-dark-grey);
 }
 
 h3 {
@@ -83,14 +81,41 @@ p {
 }
 
 input {
-  background: var(--background-white);
-  border: var(--border-blue);
-  border-radius: 8px;
-  height: 40px;
-  padding: 5px;
+  border: none;
+  border-bottom: var(--border-black);
+  color: var(--font-black);
+  width: 235px;
+  height: 20px;
+  font-size: 12px;
+  line-height: 20px;
 }
 
-button {
+input::placeholder {
+  color: var(--font-grey-secondary);
+}
+
+select {
+  appearance: none;
+  color: var(--font-grey-secondary);
+  border: none;
+  border-bottom: 1px solid var(--font-grey-secondary);
+  width: 235px;
+  height: 20px;
+  font-size: 12px;
+  line-height: 20px;
+  z-index: 1;
+}
+
+select:focus,
+input:focus {
+  outline: none;
+}
+
+option:checked {
+  color: var(--font-black);
+}
+
+button-circle {
   padding: 8px 16px;
   height: 40px;
   font-weight: bold;
@@ -116,18 +141,18 @@ a i {
   pointer-events: none;
 }
 
-.body-app{
+.body-app {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   width: 375px;
-  height: 667px;
+  height: 100vh;
   margin: 0 auto;
-  background-color: var(--font-white);
 }
 
-.js-content {
-  margin-bottom: 100px;
+.content {
+  height: 100%;
+  background-color: var(--background-white);
+  position: relative;
 }
 
 .logout {
@@ -136,14 +161,21 @@ a i {
   padding: 10px 38px;
 }
 
-.mp-r-25{
-  margin-right: 25px ;
+.mp-r-25 {
+  margin-right: 25px;
 }
 
-.mp-r-16{
-  margin-right: 15px ;
+.mp-r-16 {
+  margin-right: 15px;
 }
 
-.p-t-6{
+.p-t-6 {
   padding-top: 6px;
+}
+
+.main-header {
+  font-family: Arial;
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--font-grey);
 }

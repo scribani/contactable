@@ -1,0 +1,28 @@
+.input-content {
+  padding: 18px 60px;
+  align-content: center;
+  position: relative;
+}
+
+.error {
+  position: absolute;
+  color: var(--error);
+  font-size: 10px;
+  line-height: 16px;
+  margin-top: 1px;
+  display: none;
+}
+
+.select-button {
+  position: absolute;
+  left: 278px;
+  top: 24px;
+}
+
+.input-error{
+  border-bottom: 1px solid var(--error);
+}
+
+.input-login{
+  border-bottom: 1px solid var(--font-grey-secondary);
+}
