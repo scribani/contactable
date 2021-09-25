@@ -5,14 +5,12 @@ import STORE from "../store.js";
 import DOMHandler from "../dom_handler.js";
 import Login from "./login.js";
 import ContactsList from "../components/contacts-list.js";
+import contacCreate from "../components/contact-create.js";
 
 function getSection(currentSection) {
   switch (currentSection) {
     case CREATE_CONTACT:
-      return {
-        toString: () => "Create new contact",
-        addEventListeners: () => {},
-      };
+      return contacCreate();
     case CONTACT_DETAILS:
       return ContactDetails();
     case EDIT_CONTACT:
