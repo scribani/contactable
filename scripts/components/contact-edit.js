@@ -3,53 +3,41 @@ import DOMHandler from "../dom_handler.js";
 import Main from "../pages/main.js";
 import { createContact, editContact } from "../services/contacts_fetcher.js";
 import { CONTACT_DETAILS, CONTACTABLE } from "../constants.js";
-import { mailValidation, nameValidation, numberValidation, relationValidation } from "../validations/validations.js";
+import {
+  emailValidation,
+  nameValidation,
+  numberValidation,
+  relationValidation,
+} from "../validations/validations.js";
 
 async function onContactEdit(e) {
   e.preventDefault();
-  const { name, email, number, Relation } = e.target;
+  const { name, email, number, relation } = e.target;
+  const validName = nameValidation(name);
+  const validNumber = numberValidation(number);
+  const validEmail = emailValidation(email);
+  const validRel = relationValidation(relation);
 
-  const validname = nameValidation(name.value);
-  const validnumber = numberValidation(number.value);
-  const validemail = mailValidation(email.value);
+  if ([validName, validNumber, validEmail, validRel].includes(false)) return;
 
-
-  if (!validname) {
-    name.className = "input-error";
-    const errormsg = name.nextElementSibling;
-    errormsg.style.display = "block";
-  }
-  if (!validnumber){
-    number.className = "input-error";
-    const errormsg = number.nextElementSibling;
-    errormsg.style.display = "block";
-  }
-  if (!validemail) {
-    email.className = "input-error";
-    const errormsg = email.nextElementSibling;
-    errormsg.style.display = "block";
-  }
-
-  if ([validname, validnumber, validemail].includes(false)) return;
-  const inputs = e.target.querySelectorAll("input");
-  const errormsgs = e.target.querySelectorAll(".js-error-msg");
-
-  inputs.forEach((input) => input.className = "");
-  errormsgs.forEach((error) => error.style.display = "none");
-
-  const newContact = {
+  const editedContact = {
     name: name.value,
     email: email.value,
     number: number.value,
-    relation: Relation.value,
+    relation: relation.value,
   };
-  const userData = await editContact(STORE.currentContactId, newContact);
-  await STORE.updateContact(newContact);
-  STORE.currentSection = CONTACTABLE;
-  DOMHandler.render(Main);
+  try {
+    await editContact(STORE.currentContactId, editedContact);
+    STORE.updateContact(editedContact);
+    STORE.currentSection = CONTACTABLE;
+    DOMHandler.render(Main);
+  } catch (e) {
+    console.log(e);
+    alert(e);
+  }
 }
 
-function returnContactDetail(e){
+function returnContactDetail(e) {
   e.preventDefault();
   STORE.currentSection = CONTACT_DETAILS;
   DOMHandler.render(Main);
@@ -63,7 +51,7 @@ const contactEdit = () => {
       return `
         <form class="js-contact-edit">
           <div class="input-content">
-            <input type="text" name="name" placeholder="Name" value="${contact.name}" >
+            <input type="text" name="name" placeholder="Name" value="${contact.name}" autofocus >
             <p class="js-error-msg error">Error message</p>
           </div>
           <div class="input-content">
@@ -75,7 +63,7 @@ const contactEdit = () => {
             <p class="js-error-msg error">Error message</p>
           </div>
           <div class="input-content">
-            <select name="Relation" value="${contact.relation}">
+            <select name="relation" value="${contact.relation}">
               <option hidden selected disabled>${contact.relation}</option>
               <option value="Family">Family</option>
               <option value="Friends">Friends</option>
