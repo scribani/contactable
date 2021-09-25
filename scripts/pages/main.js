@@ -33,6 +33,7 @@ async function onLogout(e) {
     STORE.clear();
     DOMHandler.render(Login);
   } catch (e) {
+    console.log(e);
     alert(e);
   }
 }

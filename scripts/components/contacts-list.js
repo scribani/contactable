@@ -45,10 +45,16 @@ async function onFavorite(e) {
     STORE.currentContactId = parseInt(parent.dataset.id);
     const favoriteStatus = STORE.getCurrentContact().favorite;
     const updatedData = { favorite: !favoriteStatus };
-    await editContact(STORE.currentContactId, updatedData);
-    STORE.updateContact(updatedData);
-    STORE.updateFavorites();
-    DOMHandler.render(Main);
+
+    try {
+      await editContact(STORE.currentContactId, updatedData);
+      STORE.updateContact(updatedData);
+      STORE.updateFavorites();
+      DOMHandler.render(Main);
+    } catch (e) {
+      console.log(e);
+      alert(e);
+    }
   }
 }
 
@@ -64,8 +70,8 @@ const ContactsList = () => {
       const contacts = STORE.contacts;
       const favorites = STORE.favorites;
       return `
-      <section class="section list-contact-section">
-        <div class="js-contacts height-115">
+      <section class="list-contact-section">
+        <div class="js-contacts">
           ${favorites.length > 0 ? generateFavoritesTemplate(favorites) : ""}
           <h6 class="label-list">CONTACTS (${contacts.length})</h6>
           ${contacts.map((contact) => contactTemplate(contact)).join("")}

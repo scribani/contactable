@@ -24,6 +24,7 @@ async function onContactDelete(e) {
       STORE.currentSection = CONTACTABLE;
       DOMHandler.render(Main);
     } catch (e) {
+      console.log(e);
       alert(e);
     }
   }
@@ -44,7 +45,7 @@ const ContactDetails = () => {
     toString: function () {
       const contact = STORE.getCurrentContact();
       return `
-      <section class="section contact-detail-card">
+      <section class="contact-detail-card">
         <img src="../assets/images/Rectangle.png" class="avatar" />
         <h5 class="contact-name">${contact.name}</h5>
         <h6 class="relation">${contact.relation}</h6>
@@ -60,7 +61,7 @@ const ContactDetails = () => {
       `;
     },
     footer: `
-    <footer class="js-footer footer">
+    <footer class="js-footer footer footer-contact">
       <a class="js-back button-blue mp-r-25" href="#back">Back</a>
       <a class="js-delete button-blue mp-r-25" href="#delete">Delete</a>
       <a class="js-edit button-blue mp-r-25" href="#edit">Edit</a>
