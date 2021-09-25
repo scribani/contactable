@@ -21,10 +21,10 @@ const Login = (function () {
           <form class="js-login-form">
             <div class="login_inputs">
               <div>
-                <input type="email" name="email" placeholder="email" />
+                <input class="input-login" type="email" name="email" placeholder="email" />
               </div>
               <div>
-                <input type="password" name="password" placeholder="password" />
+                <input class="input-login" type="password" name="password" placeholder="password" />
               </div>
             </div>
             <div class="footer">

@@ -22,3 +22,7 @@
 .input-error{
   border-bottom: 1px solid var(--error);
 }
+
+.input-login{
+  border-bottom: 1px solid var(--font-grey-secondary);
+}
