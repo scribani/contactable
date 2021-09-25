@@ -34,6 +34,10 @@ function updateFavorites() {
   this.favorites = this.contacts.filter((contact) => contact.favorite);
 }
 
+function addContact(newcontact) {
+  this.contacts = [...this.contacts, newcontact];
+}
+
 const STORE = {
   contacts: [],
   favorites: [],
@@ -41,6 +45,7 @@ const STORE = {
   currentContactId: null,
   getCurrentContact,
   updateContact,
+  addContact,
   deleteContact,
   updateFavorites,
   setInitialData,
