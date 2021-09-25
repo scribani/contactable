@@ -1,15 +1,17 @@
+import { CONTACTABLE, LOGIN } from "./constants.js";
 import { listContacts } from "./services/contacts_fetcher.js";
 
 async function setInitialData() {
   const contacts = await listContacts();
   this.contacts = contacts;
   this.updateFavorites();
+  this.currentSection = CONTACTABLE;
 }
 
 function clear() {
   this.contacts = [];
   this.favorites = [];
-  this.currentSection = "";
+  this.currentSection = LOGIN;
   this.currentContactId = null;
 }
 
@@ -41,7 +43,7 @@ function addContact(newcontact) {
 const STORE = {
   contacts: [],
   favorites: [],
-  currentSection: "",
+  currentSection: LOGIN,
   currentContactId: null,
   getCurrentContact,
   updateContact,
